@@ -27,7 +27,13 @@ public:
 	UPROPERTY(EditAnywhere, Meta = (MakeEditWidget=true))
 	FVector TargetLocation;
 
+	void AddActiveTrigger();
+	void RemoveActiveTrigger();
+
 private:
 	FVector GlobalStartLocation;
 	FVector GlobalEndLocation;
+
+	UPROPERTY(EditAnywhere)
+	int ActiveTriggers = 1;
 };
