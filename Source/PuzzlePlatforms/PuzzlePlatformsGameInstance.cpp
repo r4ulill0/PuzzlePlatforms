@@ -17,11 +17,16 @@ void UPuzzlePlatformsGameInstance::Init()
 
 void UPuzzlePlatformsGameInstance::Host() 
 {
-    UE_LOG(LogTemp, Warning, TEXT("HOSTING"));
+
     UEngine* Engine = GetEngine();
     if (!ensure (Engine != nullptr)) return;
 
     Engine->AddOnScreenDebugMessage(0, 2.5f, FColor::Green, TEXT("Hosting"));
+
+    UWorld* World = GetWorld();
+    if (!ensure (World !=nullptr)) return;
+
+    World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
 }
 
 void UPuzzlePlatformsGameInstance::JoinSession(const FString& Address) 
