@@ -18,5 +18,13 @@ bool UConnectionMenu::Initialize()
 
 void UConnectionMenu::OnHostClicked() 
 {
-    UE_LOG(LogTemp, Warning, TEXT("Host menu option clicked!!"));
+    if (InterfaceToMenu != nullptr)
+    {
+        InterfaceToMenu->Host();
+    }
+}
+
+void UConnectionMenu::SetMenuInterface(IMenuInterface* Interface) 
+{
+    this->InterfaceToMenu = Interface;
 }

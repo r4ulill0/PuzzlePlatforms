@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "MenuInterface.h"
 #include "ConnectionMenu.generated.h"
-
 /**
  * 
  */
@@ -13,7 +13,8 @@ UCLASS()
 class PUZZLEPLATFORMS_API UConnectionMenu : public UUserWidget
 {
 	GENERATED_BODY()
-
+public:
+	void SetMenuInterface(IMenuInterface* Interface);
 protected:
 	virtual bool Initialize() override;
 
@@ -25,4 +26,6 @@ protected:
 
 	UFUNCTION()
 	void OnHostClicked();
+
+	IMenuInterface* InterfaceToMenu;
 };

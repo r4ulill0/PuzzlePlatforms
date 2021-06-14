@@ -1,5 +1,45 @@
 [
 	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MenuSystem\\\\ConnectionMenu.cpp",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MenuSystem\\\\ConnectionMenu.h",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MenuSystem\\\\MenuInterface.cpp",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MenuSystem\\\\MenuInterface.h",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MovingPlatform.cpp",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\MovingPlatform.h",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PlatformTrigger.cpp",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PlatformTrigger.h",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
 		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PuzzlePlatforms.Build.cs",
 		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
 		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
@@ -25,37 +65,22 @@
 		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
 	},
 	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PuzzlePlatformsGameInstance.cpp",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PuzzlePlatformsGameInstance.h",
+		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
+		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
+	},
+	{
 		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PuzzlePlatformsGameMode.cpp",
 		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
 		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
 	},
 	{
 		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\PuzzlePlatformsGameMode.h",
-		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
-		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
-	},
-	{
-		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\TP_ThirdPerson\\\\TP_ThirdPerson.h",
-		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
-		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
-	},
-	{
-		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\TP_ThirdPerson\\\\TP_ThirdPersonCharacter.cpp",
-		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
-		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
-	},
-	{
-		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\TP_ThirdPerson\\\\TP_ThirdPersonCharacter.h",
-		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
-		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
-	},
-	{
-		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\TP_ThirdPerson\\\\TP_ThirdPersonGameMode.cpp",
-		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
-		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
-	},
-	{
-		"file": "D:\\\\VideoGamesProjects\\\\PuzzlePlatforms\\\\Source\\\\PuzzlePlatforms\\\\TP_ThirdPerson\\\\TP_ThirdPersonGameMode.h",
 		"command": "cl.exe @\"D:\\VideoGamesProjects\\PuzzlePlatforms\\.vscode\\compileCommands_PuzzlePlatforms\\PuzzlePlatforms.182.rsp\"",
 		"directory": "C:\\FastEpicGamesLibrary\\UE_4.26\\Engine\\Source"
 	}
