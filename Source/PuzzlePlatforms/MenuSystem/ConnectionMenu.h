@@ -13,10 +13,16 @@ UCLASS()
 class PUZZLEPLATFORMS_API UConnectionMenu : public UUserWidget
 {
 	GENERATED_BODY()
-	
+
+protected:
+	virtual bool Initialize() override;
+
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Host;
 
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Join;
+
+	UFUNCTION()
+	void OnHostClicked();
 };
