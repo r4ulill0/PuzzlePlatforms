@@ -28,8 +28,26 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Join;
 
+	UPROPERTY(meta = (BindWidget))
+	class UButton* Return;
+
+	UPROPERTY(meta = (BindWidget))
+	class UWidgetSwitcher* Switcher;
+
+	UPROPERTY(meta = (BindWidget))
+	class UWidget* JoinSubmenu;
+
+	UPROPERTY(meta = (BindWidget))
+	class UWidget* MainSubmenu;
+
 	UFUNCTION()
 	void OnHostClicked();
+
+	UFUNCTION()
+	void OpenJoinMenu();
+
+	UFUNCTION()
+	void OpenMainMenu();
 
 	IMenuInterface* InterfaceToMenu;
 };
