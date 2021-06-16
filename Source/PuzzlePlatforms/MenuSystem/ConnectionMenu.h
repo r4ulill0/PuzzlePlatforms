@@ -15,6 +15,10 @@ class PUZZLEPLATFORMS_API UConnectionMenu : public UUserWidget
 	GENERATED_BODY()
 public:
 	void SetMenuInterface(IMenuInterface* Interface);
+
+	void Setup();
+
+	void Teardown();
 protected:
 	virtual bool Initialize() override;
 

@@ -28,4 +28,6 @@ public:
 
 private:
 	TSubclassOf<class UUserWidget> MenuClass;
+
+	class UConnectionMenu* Menu;
 };

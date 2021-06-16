@@ -28,3 +28,35 @@ void UConnectionMenu::SetMenuInterface(IMenuInterface* Interface)
 {
     this->InterfaceToMenu = Interface;
 }
+
+void UConnectionMenu::Setup() 
+{
+    this->AddToViewport();
+
+    UWorld* World = GetWorld();
+    if (!ensure (World !=nullptr)) return;
+    APlayerController* PlayerController = World->GetFirstPlayerController();
+    if (!ensure (PlayerController != nullptr)) return;
+
+    FInputModeUIOnly InputMode;
+    InputMode.SetWidgetToFocus(this->TakeWidget());
+    InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+    PlayerController->SetInputMode(InputMode);
+
+    PlayerController->bShowMouseCursor = true;
+}
+
+void UConnectionMenu::Teardown() 
+{
+    this->RemoveFromViewport();
+
+    UWorld* World = GetWorld();
+    if (!ensure (World !=nullptr)) return;
+    APlayerController* PlayerController = World->GetFirstPlayerController();
+    if (!ensure (PlayerController != nullptr)) return;
+
+    FInputModeGameOnly InputMode;
+    PlayerController->SetInputMode(InputMode);
+
+    PlayerController->bShowMouseCursor = false;
+}
