@@ -29,6 +29,9 @@ protected:
 	class UButton* Join;
 
 	UPROPERTY(meta = (BindWidget))
+	class UButton* JoinAddress;
+
+	UPROPERTY(meta = (BindWidget))
 	class UButton* Return;
 
 	UPROPERTY(meta = (BindWidget))
@@ -40,6 +43,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UWidget* MainSubmenu;
 
+	UPROPERTY(meta = (BindWidget))
+	class UEditableTextBox* IpAddressField;
+
 	UFUNCTION()
 	void OnHostClicked();
 
@@ -48,6 +54,9 @@ protected:
 
 	UFUNCTION()
 	void OpenMainMenu();
+
+	UFUNCTION()
+	void HandleJoin();
 
 	IMenuInterface* InterfaceToMenu;
 };

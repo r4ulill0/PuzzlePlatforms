@@ -4,6 +4,7 @@
 #include "ConnectionMenu.h"
 #include "Components/Button.h"
 #include "Components/WidgetSwitcher.h"
+#include "Components/EditableTextBox.h"
 
 bool UConnectionMenu::Initialize() 
 {
@@ -19,6 +20,9 @@ bool UConnectionMenu::Initialize()
 
     if (!ensure(Return != nullptr)) return false;
     Return->OnClicked.AddDynamic(this, &UConnectionMenu::OpenMainMenu);
+
+    if (!ensure(JoinAddress != nullptr)) return false;
+    JoinAddress->OnClicked.AddDynamic(this, &UConnectionMenu::HandleJoin);
 
     return true;
 }
@@ -43,6 +47,16 @@ void UConnectionMenu::OpenMainMenu()
     if (!ensure(Switcher != nullptr)) return;
     if (!ensure(MainSubmenu != nullptr)) return;
     Switcher->SetActiveWidget(MainSubmenu);
+}
+
+void UConnectionMenu::HandleJoin() 
+{
+    if (!ensure(IpAddressField  != nullptr)) return;
+
+    if (InterfaceToMenu != nullptr)
+    {
+        InterfaceToMenu->Join(IpAddressField->GetText().ToString());
+    }
 }
 
 void UConnectionMenu::SetMenuInterface(IMenuInterface* Interface) 

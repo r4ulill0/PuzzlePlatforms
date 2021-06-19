@@ -19,9 +19,9 @@ public:
 
 	UFUNCTION(Exec)
 	void Host();
-	
+
 	UFUNCTION(Exec)
-	void JoinSession(const FString& Address);
+	void Join(const FString& Address);
 
 	UFUNCTION(BlueprintCallable, Exec)
 	void LoadMenu();

@@ -23,4 +23,6 @@ class PUZZLEPLATFORMS_API IMenuInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual void Host() = 0; // This " = 0 " means that is an abstract method and it's not implemented in the interface class;
+
+	virtual void Join(const FString& Address) = 0;
 };
