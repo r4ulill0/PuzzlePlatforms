@@ -3,22 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "MenuInterface.h"
+#include "MenuWidget.h"
 #include "ConnectionMenu.generated.h"
 /**
  * 
  */
 UCLASS()
-class PUZZLEPLATFORMS_API UConnectionMenu : public UUserWidget
+class PUZZLEPLATFORMS_API UConnectionMenu : public UMenuWidget
 {
 	GENERATED_BODY()
-public:
-	void SetMenuInterface(IMenuInterface* Interface);
 
-	void Setup();
-
-	void Teardown();
 protected:
 	virtual bool Initialize() override;
 
@@ -57,6 +51,4 @@ protected:
 
 	UFUNCTION()
 	void HandleJoin();
-
-	IMenuInterface* InterfaceToMenu;
 };

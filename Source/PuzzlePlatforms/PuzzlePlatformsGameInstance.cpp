@@ -7,12 +7,17 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
 #include "MenuSystem/ConnectionMenu.h"
+#include "MenuSystem/MenuWidget.h"
 
 UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitializer & ObjectInitializer) 
 {
     ConstructorHelpers::FClassFinder<UUserWidget> ConnectionMenu(TEXT("/Game/MenuSystem/WBP_ConnectionMenu"));
     if (!ensure(ConnectionMenu.Class != nullptr)) return;
     MenuClass = ConnectionMenu.Class;
+
+    ConstructorHelpers::FClassFinder<UUserWidget> PauseMenuBPClass(TEXT("/Game/MenuSystem/WBP_PauseMenu"));
+    if (!ensure(PauseMenuBPClass.Class != nullptr)) return;
+    PauseMenuClass = PauseMenuBPClass.Class;
 }
 
 void UPuzzlePlatformsGameInstance::Init() 
@@ -62,6 +67,16 @@ void UPuzzlePlatformsGameInstance::LoadMenu()
     Menu = CreateWidget<UConnectionMenu>(this, MenuClass);
     if (!ensure(Menu != nullptr)) return;
 
-    Menu->Setup();
     Menu->SetMenuInterface(this);
+    Menu->Setup();
+}
+
+void UPuzzlePlatformsGameInstance::InGameLoadMenu() 
+{
+    if (!ensure (PauseMenuClass !=nullptr)) return;
+    UMenuWidget* LocalMenu = CreateWidget<UMenuWidget>(this, PauseMenuClass);
+    if (!ensure(LocalMenu != nullptr)) return;
+
+    LocalMenu->SetMenuInterface(this);
+    LocalMenu->Setup();
 }

@@ -26,8 +26,12 @@ public:
 	UFUNCTION(BlueprintCallable, Exec)
 	void LoadMenu();
 
+	UFUNCTION(BlueprintCallable, Exec)
+	void InGameLoadMenu();
+
 private:
 	TSubclassOf<class UUserWidget> MenuClass;
+	TSubclassOf<class UUserWidget> PauseMenuClass;
 
 	class UConnectionMenu* Menu;
 };
