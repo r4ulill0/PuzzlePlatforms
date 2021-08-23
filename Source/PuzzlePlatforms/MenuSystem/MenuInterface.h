@@ -25,4 +25,6 @@ public:
 	virtual void Host() = 0; // This " = 0 " means that is an abstract method and it's not implemented in the interface class;
 
 	virtual void Join(const FString& Address) = 0;
+
+	virtual void LoadMainMenu() = 0;
 };

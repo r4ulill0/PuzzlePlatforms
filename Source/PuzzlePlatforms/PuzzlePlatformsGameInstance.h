@@ -18,10 +18,13 @@ public:
 	virtual void Init();
 
 	UFUNCTION(Exec)
-	void Host();
+	void Host() override;
 
 	UFUNCTION(Exec)
-	void Join(const FString& Address);
+	void Join(const FString& Address) override;
+
+	UFUNCTION(Exec)
+	virtual void LoadMainMenu() override;
 
 	UFUNCTION(BlueprintCallable, Exec)
 	void LoadMenu();

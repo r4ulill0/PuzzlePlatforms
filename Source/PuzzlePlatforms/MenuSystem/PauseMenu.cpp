@@ -21,10 +21,14 @@ bool UPauseMenu::Initialize()
 
 void UPauseMenu::OnCancelClicked() 
 {
-    UE_LOG(LogTemp, Warning, TEXT("CANCEL CLICKED"));
+    Teardown();
 }
 
 void UPauseMenu::OnQuitClicked() 
 {
-    UE_LOG(LogTemp, Warning, TEXT("CANCEL CLICKED"));
+    if (InterfaceToMenu != nullptr)
+    {
+        Teardown();
+        InterfaceToMenu->LoadMainMenu();
+    }
 }
