@@ -23,6 +23,9 @@ public:
 	UFUNCTION(Exec)
 	void Join(const FString& Address) override;
 
+	UFUNCTION()
+	void Quit() override;
+
 	UFUNCTION(Exec)
 	virtual void LoadMainMenu() override;
 

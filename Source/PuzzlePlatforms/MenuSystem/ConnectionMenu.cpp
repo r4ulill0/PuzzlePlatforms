@@ -24,6 +24,9 @@ bool UConnectionMenu::Initialize()
     if (!ensure(JoinAddress != nullptr)) return false;
     JoinAddress->OnClicked.AddDynamic(this, &UConnectionMenu::HandleJoin);
 
+    if (!ensure(Quit != nullptr)) return false;
+    Quit->OnClicked.AddDynamic(this, &UConnectionMenu::OnQuitClicked);
+
     return true;
 }
 
@@ -56,5 +59,13 @@ void UConnectionMenu::HandleJoin()
     if (InterfaceToMenu != nullptr)
     {
         InterfaceToMenu->Join(IpAddressField->GetText().ToString());
+    }
+}
+
+void UConnectionMenu::OnQuitClicked() 
+{
+    if (InterfaceToMenu != nullptr)
+    {
+        InterfaceToMenu->Quit();
     }
 }

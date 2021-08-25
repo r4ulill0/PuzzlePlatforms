@@ -61,6 +61,14 @@ void UPuzzlePlatformsGameInstance::Join(const FString& Address)
     PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute, false);
 }
 
+void UPuzzlePlatformsGameInstance::Quit() 
+{
+    APlayerController* PlayerController = GetFirstLocalPlayerController();
+    if (!ensure (PlayerController != nullptr)) return;
+    
+    PlayerController->ConsoleCommand("quit");
+}
+
 void UPuzzlePlatformsGameInstance::LoadMainMenu() 
 {
     APlayerController* PlayerController = GetFirstLocalPlayerController();

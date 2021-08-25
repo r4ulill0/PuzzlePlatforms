@@ -17,6 +17,9 @@ protected:
 	virtual bool Initialize() override;
 
 	UPROPERTY(meta = (BindWidget))
+	class UButton* Quit;
+
+	UPROPERTY(meta = (BindWidget))
 	class UButton* Host;
 
 	UPROPERTY(meta = (BindWidget))
@@ -51,4 +54,7 @@ protected:
 
 	UFUNCTION()
 	void HandleJoin();
+
+	UFUNCTION()
+	void OnQuitClicked();
 };
