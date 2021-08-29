@@ -6,6 +6,8 @@
 #include "Engine/Engine.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
+#include "OnlineSubsystem.h"
+
 #include "MenuSystem/ConnectionMenu.h"
 #include "MenuSystem/MenuWidget.h"
 
@@ -23,6 +25,10 @@ UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitiali
 void UPuzzlePlatformsGameInstance::Init() 
 {
     UE_LOG(LogTemp, Warning, TEXT("Found class %s"), *MenuClass->GetName());
+    IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get(TEXT("STEAM"));
+    if (!ensure(OnlineSubsystem != nullptr)) return;
+
+    UE_LOG(LogTemp, Warning, TEXT("Online subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
 }
 
 void UPuzzlePlatformsGameInstance::Host() 
