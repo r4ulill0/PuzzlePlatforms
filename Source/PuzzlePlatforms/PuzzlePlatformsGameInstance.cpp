@@ -25,10 +25,17 @@ UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitiali
 void UPuzzlePlatformsGameInstance::Init() 
 {
     UE_LOG(LogTemp, Warning, TEXT("Found class %s"), *MenuClass->GetName());
-    IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get(TEXT("STEAM"));
-    if (!ensure(OnlineSubsystem != nullptr)) return;
+    IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get(TEXT("NULL"));
+    if (OnlineSubsystem != nullptr) 
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Found online subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
+        auto SessionInterface = OnlineSubsystem->GetSessionInterface();
+        if (SessionInterface.IsValid()) 
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Found SessionInterface"));
+        }
+    }
 
-    UE_LOG(LogTemp, Warning, TEXT("Online subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
 }
 
 void UPuzzlePlatformsGameInstance::Host() 
