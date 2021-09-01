@@ -6,7 +6,9 @@
 #include "Engine/Engine.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
-#include "OnlineSubsystem.h"
+
+#include "OnlineSessionSettings.h"
+#include "Interfaces/OnlineSessionInterface.h"
 
 #include "MenuSystem/ConnectionMenu.h"
 #include "MenuSystem/MenuWidget.h"
@@ -29,10 +31,11 @@ void UPuzzlePlatformsGameInstance::Init()
     if (OnlineSubsystem != nullptr) 
     {
         UE_LOG(LogTemp, Warning, TEXT("Found online subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
-        auto SessionInterface = OnlineSubsystem->GetSessionInterface();
+        SessionInterface = OnlineSubsystem->GetSessionInterface();
         if (SessionInterface.IsValid()) 
         {
             UE_LOG(LogTemp, Warning, TEXT("Found SessionInterface"));
+            SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UPuzzlePlatformsGameInstance::OnCreateSessionComplete);
         }
     }
 
@@ -40,6 +43,20 @@ void UPuzzlePlatformsGameInstance::Init()
 
 void UPuzzlePlatformsGameInstance::Host() 
 {
+    if (SessionInterface.IsValid())
+    {
+        FOnlineSessionSettings SessionSettings;
+        SessionInterface->CreateSession(0, TEXT("My session game"), SessionSettings);
+    }
+}
+
+void UPuzzlePlatformsGameInstance::OnCreateSessionComplete(FName SessionName, bool Success) 
+{
+    if (!Success)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Could not create a session"));
+        return;
+    }
     if (Menu != nullptr)
     {
         Menu->Teardown();
