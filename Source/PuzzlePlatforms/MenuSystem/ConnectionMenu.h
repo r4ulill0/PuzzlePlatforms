@@ -12,7 +12,8 @@ UCLASS()
 class PUZZLEPLATFORMS_API UConnectionMenu : public UMenuWidget
 {
 	GENERATED_BODY()
-
+public:
+	UConnectionMenu(const FObjectInitializer &ObjectInitializer);
 protected:
 	virtual bool Initialize() override;
 
@@ -41,7 +42,7 @@ protected:
 	class UWidget* MainSubmenu;
 
 	UPROPERTY(meta = (BindWidget))
-	class UEditableTextBox* IpAddressField;
+	class UPanelWidget* ConnectionList;
 
 	UFUNCTION()
 	void OnHostClicked();
@@ -57,4 +58,7 @@ protected:
 
 	UFUNCTION()
 	void OnQuitClicked();
+
+private:
+	TSubclassOf<class UUserWidget> ConnectionCandidateClass;
 };
