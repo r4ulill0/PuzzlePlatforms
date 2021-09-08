@@ -6,13 +6,29 @@
 #include "Components/Button.h"
 #include "Components/WidgetSwitcher.h"
 #include "Components/EditableTextBox.h"
-
+#include "Components/TextBlock.h"
 
 UConnectionMenu::UConnectionMenu(const FObjectInitializer &ObjectInitializer) 
 {
     ConstructorHelpers::FClassFinder<UUserWidget> ConnectionCandidateFinder(TEXT("/Game/MenuSystem/WBP_ConnectionCandidate"));
     if (!ensure(ConnectionCandidateFinder.Class != nullptr)) return;
     ConnectionCandidateClass = ConnectionCandidateFinder.Class;
+}
+
+void UConnectionMenu::SetServerList(TArray<FString> ServerNames) 
+{
+    UWorld* World = GetWorld();
+    if (!ensure (World != nullptr)) return;
+
+    ConnectionList->ClearChildren();
+    for (FString& ServerName: ServerNames)
+    {
+        if (!ensure (ConnectionCandidateClass != nullptr)) return;
+        UE_LOG(LogTemp, Warning, TEXT("ConnectionCandidateClass correct"));
+        UConnectionCandidate* ConnectionCandidate = CreateWidget<UConnectionCandidate>(World, ConnectionCandidateClass);
+        ConnectionCandidate->ServerName->SetText(FText::FromString(ServerName));
+        ConnectionList->AddChild(ConnectionCandidate);
+    }
 }
 
 bool UConnectionMenu::Initialize() 
@@ -59,6 +75,8 @@ void UConnectionMenu::OpenMainMenu()
     if (!ensure(Switcher != nullptr)) return;
     if (!ensure(MainSubmenu != nullptr)) return;
     Switcher->SetActiveWidget(MainSubmenu);
+    
+    if (InterfaceToMenu != nullptr) InterfaceToMenu->RefreshServers();
 }
 
 void UConnectionMenu::HandleJoin() 
@@ -66,19 +84,10 @@ void UConnectionMenu::HandleJoin()
     UE_LOG(LogTemp, Warning, TEXT("Handling join"));
     if (InterfaceToMenu != nullptr)
     {
-        UE_LOG(LogTemp, Warning, TEXT("Interface correct"));
-        // DELETE THIS
-        // This will be only temp code to test scrollBox
-        UWorld* World = this->GetWorld();
-        if (!ensure (World != nullptr)) return;
-        UE_LOG(LogTemp, Warning, TEXT("World correct"));
-
-        if (!ensure (ConnectionCandidateClass != nullptr)) return;
-        UE_LOG(LogTemp, Warning, TEXT("ConnectionCandidateClass correct"));
-        UConnectionCandidate* ConnectionCandidate = CreateWidget<UConnectionCandidate>(World, ConnectionCandidateClass);
-        ConnectionList->AddChild(ConnectionCandidate);
+        
     // Keep this to stablish the connection
     //     InterfaceToMenu->Join(IpAddressField->GetText().ToString());
+        InterfaceToMenu->Join("");
     }
 }
 

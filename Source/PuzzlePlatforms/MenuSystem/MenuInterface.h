@@ -29,4 +29,6 @@ public:
 	virtual void Quit() = 0;
 
 	virtual void LoadMainMenu() = 0;
+
+	virtual void RefreshServers() = 0;
 };

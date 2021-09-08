@@ -14,6 +14,8 @@ class PUZZLEPLATFORMS_API UConnectionMenu : public UMenuWidget
 	GENERATED_BODY()
 public:
 	UConnectionMenu(const FObjectInitializer &ObjectInitializer);
+
+	void SetServerList(TArray<FString> ServerNames);
 protected:
 	virtual bool Initialize() override;
 

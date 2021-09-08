@@ -90,6 +90,7 @@ void UPuzzlePlatformsGameInstance::OnCreateSessionComplete(FName SessionName, bo
     UWorld* World = GetWorld();
     if (!ensure (World !=nullptr)) return;
 
+    SessionInterface->CancelFindSessions();
     World->ServerTravel(TEXT("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen"));
 }
 
@@ -105,11 +106,13 @@ void UPuzzlePlatformsGameInstance::OnFindSessionsComplete(bool Success)
 {
     if (Success && SessionSearch.IsValid())
     {
+        TArray<FString> ServerList;
         for (FOnlineSessionSearchResult& Result: SessionSearch->SearchResults)
         {
+            ServerList.Add(Result.GetSessionIdStr());
             UE_LOG(LogTemp, Warning, TEXT("Found online session %s"), *Result.GetSessionIdStr());
         }
-        
+        Menu->SetServerList(ServerList);
     }
 }
 
@@ -130,18 +133,18 @@ void UPuzzlePlatformsGameInstance::Join(const FString& Address)
 {
     if (Menu != nullptr)
     {
-        Menu->Teardown();
+        // Menu->Teardown();
     }
 
-    UEngine* Engine = GetEngine();
-    if (!ensure (Engine != nullptr)) return;
+    // UEngine* Engine = GetEngine();
+    // if (!ensure (Engine != nullptr)) return;
 
-    Engine->AddOnScreenDebugMessage(0, 2.5f, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
+    // Engine->AddOnScreenDebugMessage(0, 2.5f, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
 
-    APlayerController* PlayerController = GetFirstLocalPlayerController();
-    if (!ensure (PlayerController != nullptr)) return;
+    // APlayerController* PlayerController = GetFirstLocalPlayerController();
+    // if (!ensure (PlayerController != nullptr)) return;
 
-    PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute, false);
+    // PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute, false);
 }
 
 void UPuzzlePlatformsGameInstance::Quit() 
@@ -159,6 +162,15 @@ void UPuzzlePlatformsGameInstance::LoadMainMenu()
 
     PlayerController->ClientTravel(TEXT("/Game/MenuSystem/ConnectionMenu"), ETravelType::TRAVEL_Absolute, false);
     
+}
+
+void UPuzzlePlatformsGameInstance::RefreshServers() 
+{
+    if (SessionSearch.IsValid())
+    {
+        // SessionSearch->QuerySettings This will be used for steam session search
+        SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
+    }
 }
 
 void UPuzzlePlatformsGameInstance::LoadMenu() 

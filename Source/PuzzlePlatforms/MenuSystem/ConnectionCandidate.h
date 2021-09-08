@@ -13,4 +13,7 @@ UCLASS()
 class PUZZLEPLATFORMS_API UConnectionCandidate : public UUserWidget
 {
 	GENERATED_BODY()
+public:
+	UPROPERTY(meta=(BindWidget))
+	class UTextBlock* ServerName;
 };
