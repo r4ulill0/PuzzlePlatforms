@@ -16,6 +16,9 @@ public:
 	UConnectionMenu(const FObjectInitializer &ObjectInitializer);
 
 	void SetServerList(TArray<FString> ServerNames);
+
+	void SelectIndex(uint32 Index);
+
 protected:
 	virtual bool Initialize() override;
 
@@ -61,6 +64,7 @@ protected:
 	UFUNCTION()
 	void OnQuitClicked();
 
+	TOptional<uint32> SelectedIndex;
 private:
 	TSubclassOf<class UUserWidget> ConnectionCandidateClass;
 };

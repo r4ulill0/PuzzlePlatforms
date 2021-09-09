@@ -21,14 +21,22 @@ void UConnectionMenu::SetServerList(TArray<FString> ServerNames)
     if (!ensure (World != nullptr)) return;
 
     ConnectionList->ClearChildren();
+    uint32 Index = 0;
     for (FString& ServerName: ServerNames)
     {
         if (!ensure (ConnectionCandidateClass != nullptr)) return;
         UE_LOG(LogTemp, Warning, TEXT("ConnectionCandidateClass correct"));
         UConnectionCandidate* ConnectionCandidate = CreateWidget<UConnectionCandidate>(World, ConnectionCandidateClass);
         ConnectionCandidate->ServerName->SetText(FText::FromString(ServerName));
+        ConnectionCandidate->Setup(this, Index);
+        Index++;
         ConnectionList->AddChild(ConnectionCandidate);
     }
+}
+
+void UConnectionMenu::SelectIndex(uint32 Index) 
+{
+    SelectedIndex = Index;
 }
 
 bool UConnectionMenu::Initialize() 
@@ -81,7 +89,11 @@ void UConnectionMenu::OpenMainMenu()
 
 void UConnectionMenu::HandleJoin() 
 {
-    UE_LOG(LogTemp, Warning, TEXT("Handling join"));
+    if (SelectedIndex.IsSet()) {
+        UE_LOG(LogTemp, Warning, TEXT("Selected index is %d"), SelectedIndex.GetValue());
+    } else {
+        UE_LOG(LogTemp, Warning, TEXT("There is no selected index"));
+    }
     if (InterfaceToMenu != nullptr)
     {
         
