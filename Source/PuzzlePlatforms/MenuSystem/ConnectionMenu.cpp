@@ -89,17 +89,10 @@ void UConnectionMenu::OpenMainMenu()
 
 void UConnectionMenu::HandleJoin() 
 {
-    if (SelectedIndex.IsSet()) {
-        UE_LOG(LogTemp, Warning, TEXT("Selected index is %d"), SelectedIndex.GetValue());
+    if (SelectedIndex.IsSet() && InterfaceToMenu != nullptr) {
+        InterfaceToMenu->Join(SelectedIndex.GetValue());
     } else {
         UE_LOG(LogTemp, Warning, TEXT("There is no selected index"));
-    }
-    if (InterfaceToMenu != nullptr)
-    {
-        
-    // Keep this to stablish the connection
-    //     InterfaceToMenu->Join(IpAddressField->GetText().ToString());
-        InterfaceToMenu->Join("");
     }
 }
 
