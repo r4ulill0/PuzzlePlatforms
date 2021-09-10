@@ -129,15 +129,16 @@ void UPuzzlePlatformsGameInstance::OnJoinSessionComplete(FName SessionName, EOnJ
         FString Address;
         if (SessionInterface->GetResolvedConnectString(SessionName, Address)) 
         {
+            UEngine* Engine = GetEngine();
+            if (!ensure (Engine != nullptr)) return;
+
+            Engine->AddOnScreenDebugMessage(0, 2.5f, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
+
             PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute, false);
         } else {
             UE_LOG(LogTemp, Warning, TEXT("Connection failed, F in the chat"));
         }
     }
-    // UEngine* Engine = GetEngine();
-    // if (!ensure (Engine != nullptr)) return;
-
-    // Engine->AddOnScreenDebugMessage(0, 2.5f, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
 
 }
 
