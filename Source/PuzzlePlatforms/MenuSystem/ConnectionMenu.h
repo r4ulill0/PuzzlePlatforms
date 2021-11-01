@@ -65,6 +65,8 @@ protected:
 	void OnQuitClicked();
 
 	TOptional<uint32> SelectedIndex;
+
+	void UpdateChildren();
 private:
 	TSubclassOf<class UUserWidget> ConnectionCandidateClass;
 };

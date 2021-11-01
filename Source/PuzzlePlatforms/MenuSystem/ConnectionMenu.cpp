@@ -37,8 +37,20 @@ void UConnectionMenu::SetServerList(TArray<FString> ServerNames)
 void UConnectionMenu::SelectIndex(uint32 Index) 
 {
     SelectedIndex = Index;
+    UpdateChildren();
 }
 
+void UConnectionMenu::UpdateChildren()
+{
+    for (int32 i = 0; i<ConnectionList->GetChildrenCount(); i++)
+    {
+        UConnectionCandidate* Row = Cast<UConnectionCandidate>(ConnectionList->GetChildAt(i));
+        if (Row != nullptr)
+        {
+            Row->Selected = (SelectedIndex.IsSet() && SelectedIndex.GetValue() == i);
+        }
+    }
+}
 bool UConnectionMenu::Initialize() 
 {
     bool Success = Super::Initialize();
