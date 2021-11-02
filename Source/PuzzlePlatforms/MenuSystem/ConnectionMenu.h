@@ -5,6 +5,18 @@
 #include "CoreMinimal.h"
 #include "MenuWidget.h"
 #include "ConnectionMenu.generated.h"
+
+USTRUCT()
+struct FServerData
+{
+	GENERATED_BODY()
+
+	FString Name;
+	uint16 CurrentPlayers;
+	uint16 TotalPlayers;
+	FString HostUsername;
+};
+
 /**
  * 
  */
@@ -15,7 +27,7 @@ class PUZZLEPLATFORMS_API UConnectionMenu : public UMenuWidget
 public:
 	UConnectionMenu(const FObjectInitializer &ObjectInitializer);
 
-	void SetServerList(TArray<FString> ServerNames);
+	void SetServerList(TArray<FServerData> ServerNames);
 
 	void SelectIndex(uint32 Index);
 

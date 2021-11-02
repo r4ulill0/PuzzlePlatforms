@@ -16,6 +16,10 @@ class PUZZLEPLATFORMS_API UConnectionCandidate : public UUserWidget
 public:
 	UPROPERTY(meta=(BindWidget))
 	class UTextBlock* ServerName;
+	UPROPERTY(meta=(BindWidget))
+	class UTextBlock* PlayerPopulation;
+	UPROPERTY(meta=(BindWidget))
+	class UTextBlock* HostName;
 
 	UPROPERTY(BlueprintReadOnly)
 	bool Selected = false;

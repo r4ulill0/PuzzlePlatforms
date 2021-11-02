@@ -29,7 +29,7 @@ UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitiali
 void UPuzzlePlatformsGameInstance::Init() 
 {
     UE_LOG(LogTemp, Warning, TEXT("Found class %s"), *MenuClass->GetName());
-    IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get(TEXT("NULL"));
+    IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
     if (OnlineSubsystem != nullptr) 
     {
         UE_LOG(LogTemp, Warning, TEXT("Found online subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
@@ -107,10 +107,15 @@ void UPuzzlePlatformsGameInstance::OnFindSessionsComplete(bool Success)
 {
     if (Success && SessionSearch.IsValid())
     {
-        TArray<FString> ServerList;
+        TArray<FServerData> ServerList;
         for (FOnlineSessionSearchResult& Result: SessionSearch->SearchResults)
         {
-            ServerList.Add(Result.GetSessionIdStr());
+            FServerData Server;
+            Server.Name = Result.GetSessionIdStr();
+            Server.HostUsername = Result.Session.OwningUserName;
+            Server.TotalPlayers = Result.Session.SessionSettings.NumPublicConnections;
+            Server.CurrentPlayers = Server.TotalPlayers - Result.Session.NumOpenPublicConnections;
+            ServerList.Add(Server);
             UE_LOG(LogTemp, Warning, TEXT("Found online session %s"), *Result.GetSessionIdStr());
         }
         Menu->SetServerList(ServerList);
@@ -147,7 +152,14 @@ void UPuzzlePlatformsGameInstance::CreateSession()
     if (SessionInterface)
     {
         FOnlineSessionSettings SessionSettings;
-        SessionSettings.bIsLANMatch = false;
+        if (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL")
+        {
+            SessionSettings.bIsLANMatch = true;
+        } 
+        else 
+        {
+            SessionSettings.bIsLANMatch = false;
+        }
         SessionSettings.bUsesPresence = true;
         SessionSettings.NumPublicConnections = 2;
         SessionSettings.bShouldAdvertise = true;

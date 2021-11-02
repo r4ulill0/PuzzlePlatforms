@@ -15,19 +15,22 @@ UConnectionMenu::UConnectionMenu(const FObjectInitializer &ObjectInitializer)
     ConnectionCandidateClass = ConnectionCandidateFinder.Class;
 }
 
-void UConnectionMenu::SetServerList(TArray<FString> ServerNames) 
+void UConnectionMenu::SetServerList(TArray<FServerData> ServerList) 
 {
     UWorld* World = GetWorld();
     if (!ensure (World != nullptr)) return;
 
     ConnectionList->ClearChildren();
     uint32 Index = 0;
-    for (FString& ServerName: ServerNames)
+    for (FServerData& Server: ServerList)
     {
         if (!ensure (ConnectionCandidateClass != nullptr)) return;
         UE_LOG(LogTemp, Warning, TEXT("ConnectionCandidateClass correct"));
         UConnectionCandidate* ConnectionCandidate = CreateWidget<UConnectionCandidate>(World, ConnectionCandidateClass);
-        ConnectionCandidate->ServerName->SetText(FText::FromString(ServerName));
+        ConnectionCandidate->ServerName->SetText(FText::FromString(Server.Name));
+        ConnectionCandidate->HostName->SetText(FText::FromString(Server.HostUsername));
+        FString FractionText = FString::Printf(TEXT("%d/%d "), Server.CurrentPlayers, Server.TotalPlayers);
+        ConnectionCandidate->PlayerPopulation->SetText(FText::FromString(FractionText));
         ConnectionCandidate->Setup(this, Index);
         Index++;
         ConnectionList->AddChild(ConnectionCandidate);
