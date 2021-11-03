@@ -60,14 +60,20 @@ bool UConnectionMenu::Initialize()
     if (!Success) return false;
 
 
+    if (!ensure(HostCreate != nullptr)) return false;
+    HostCreate->OnClicked.AddDynamic(this, &UConnectionMenu::OnHostClicked);
+
     if (!ensure(Host != nullptr)) return false;
-    Host->OnClicked.AddDynamic(this, &UConnectionMenu::OnHostClicked);
+    Host->OnClicked.AddDynamic(this, &UConnectionMenu::OpenHostMenu);
 
     if (!ensure(Join != nullptr)) return false;
     Join->OnClicked.AddDynamic(this, &UConnectionMenu::OpenJoinMenu);
 
     if (!ensure(Return != nullptr)) return false;
     Return->OnClicked.AddDynamic(this, &UConnectionMenu::OpenMainMenu);
+
+    if (!ensure(ReturnToMain != nullptr)) return false;
+    ReturnToMain->OnClicked.AddDynamic(this, &UConnectionMenu::OpenMainMenu);
 
     if (!ensure(JoinAddress != nullptr)) return false;
     JoinAddress->OnClicked.AddDynamic(this, &UConnectionMenu::HandleJoin);
@@ -82,8 +88,17 @@ void UConnectionMenu::OnHostClicked()
 {
     if (InterfaceToMenu != nullptr)
     {
-        InterfaceToMenu->Host();
+        FString ServerName = ServerNameInput->GetText().ToString();
+        UE_LOG(LogTemp, Warning, TEXT("The input text is %s"), *ServerName);
+        InterfaceToMenu->Host(ServerName);
     }
+}
+
+void UConnectionMenu::OpenHostMenu()
+{
+    if (!ensure(Switcher != nullptr)) return;
+    if (!ensure(HostSubmenu != nullptr)) return;
+    Switcher->SetActiveWidget(HostSubmenu);
 }
 
 void UConnectionMenu::OpenJoinMenu() 

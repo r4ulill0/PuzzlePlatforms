@@ -41,6 +41,9 @@ protected:
 	class UButton* Host;
 
 	UPROPERTY(meta = (BindWidget))
+	class UButton* HostCreate;
+
+	UPROPERTY(meta = (BindWidget))
 	class UButton* Join;
 
 	UPROPERTY(meta = (BindWidget))
@@ -50,7 +53,13 @@ protected:
 	class UButton* Return;
 
 	UPROPERTY(meta = (BindWidget))
+	class UButton* ReturnToMain;
+
+	UPROPERTY(meta = (BindWidget))
 	class UWidgetSwitcher* Switcher;
+
+	UPROPERTY(meta = (BindWidget))
+	class UWidget* HostSubmenu;
 
 	UPROPERTY(meta = (BindWidget))
 	class UWidget* JoinSubmenu;
@@ -61,8 +70,14 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* ConnectionList;
 
+	UPROPERTY(meta = (BindWidget))
+	class UEditableTextBox* ServerNameInput;
+
 	UFUNCTION()
 	void OnHostClicked();
+
+	UFUNCTION()
+	void OpenHostMenu();
 
 	UFUNCTION()
 	void OpenJoinMenu();
