@@ -52,6 +52,15 @@ void UPuzzlePlatformsGameInstance::Init()
         }
     }
 
+    if (GEngine != nullptr)
+    {
+        GEngine->OnNetworkFailure().AddUObject(this, &UPuzzlePlatformsGameInstance::OnNetworkFailure);
+    }
+}
+
+void UPuzzlePlatformsGameInstance::OnNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString)
+{
+    LoadMainMenu();
 }
 
 void UPuzzlePlatformsGameInstance::Host(FString ServerName) 
