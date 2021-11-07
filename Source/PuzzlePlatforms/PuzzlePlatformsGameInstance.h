@@ -28,6 +28,8 @@ public:
 	UFUNCTION()
 	void Quit() override;
 
+	void StartSession();
+
 	UFUNCTION(Exec)
 	virtual void LoadMainMenu() override;
 

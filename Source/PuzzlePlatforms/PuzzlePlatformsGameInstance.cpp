@@ -182,7 +182,7 @@ void UPuzzlePlatformsGameInstance::CreateSession(FName FormattedServerName)
             SessionSettings.bIsLANMatch = false;
         }
         SessionSettings.bUsesPresence = true;
-        SessionSettings.NumPublicConnections = 2;
+        SessionSettings.NumPublicConnections = 5;
         SessionSettings.bShouldAdvertise = true;
 
         SessionSettings.Set(TEXT("ServerName"), FormattedServerName.ToString(), EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
@@ -251,3 +251,11 @@ void UPuzzlePlatformsGameInstance::InGameLoadMenu()
     LocalMenu->SetMenuInterface(this);
     LocalMenu->Setup();
 }
+
+void UPuzzlePlatformsGameInstance::StartSession()
+{
+    if (SessionInterface.IsValid())
+    {
+        SessionInterface->StartSession(SESSION_NAME);
+    }
+} 
